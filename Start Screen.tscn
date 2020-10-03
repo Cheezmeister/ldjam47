@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Start Screen.gd" type="Script" id=1]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Game Title" type="RichTextLabel" parent="."]
+anchor_left = 0.039
+anchor_top = 0.067
+anchor_right = 0.939
+anchor_bottom = 0.424
+margin_left = 172.064
+margin_top = 96.8
+margin_right = -449.536
+margin_bottom = -97.4
+rect_rotation = 4.0
+rect_scale = Vector2( 2, 2 )
+meta_underlined = false
+text = "Cuet Piggy Farm Roguelite Adventure Gam <3"
+fit_content_height = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Subtitle" type="RichTextLabel" parent="."]
+margin_left = 465.0
+margin_top = 323.0
+margin_right = 545.0
+margin_bottom = 343.0
+custom_colors/default_color = Color( 0.572549, 0.831373, 0.215686, 1 )
+text = "Press Start"
