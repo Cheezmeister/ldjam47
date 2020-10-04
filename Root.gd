@@ -17,4 +17,5 @@ func _ready():
 
 
 func _on_Main_Music_Intro_finished():
+	print("wat")
 	$"Main Music Loop".play()
