@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Root.gd" type="Script" id=1]
 [ext_resource path="res://assets/piggysprite.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://TileMap.gd" type="Script" id=7]
 [ext_resource path="res://Hitbox.gd" type="Script" id=8]
 [ext_resource path="res://assets/Intro_Main.ogg" type="AudioStream" id=9]
+[ext_resource path="res://assets/SFX/Combat/Sickle Swings/Sickle_1.wav" type="AudioStream" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -108,6 +109,10 @@ script = ExtResource( 8 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Hitbox"]
 shape = SubResource( 1 )
+
+[node name="SickleSwing" type="AudioStreamPlayer2D" parent="Player"]
+position = Vector2( -400, -200 )
+stream = ExtResource( 10 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 2 )

@@ -13,6 +13,10 @@ var movement: Vector2 = Vector2(0, 0)
 func move(velocity):
 	self.transform.origin += velocity
 	
+func attack():
+	if not $SickleSwing.playing:
+		$SickleSwing.play()
+	
 func _process(delta):
 
 	self.movement = Vector2(0, 0)
@@ -28,6 +32,9 @@ func _process(delta):
 	if (Input.is_key_pressed(KEY_ESCAPE)):
 		get_tree().quit()
 
+	if (Input.is_action_pressed("ui_accept")):
+		self.attack()
+		
 	return delta
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
