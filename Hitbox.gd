@@ -1,4 +1,4 @@
-extends Area2D
+extends KinematicBody2D
 
 
 # Declare member variables here. Examples:
@@ -14,3 +14,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+func _physics_process(delta):
+	var parent = self.get_parent()
+	var velocity = move_and_slide(parent.movement, Vector2(0, 0))
+	parent.move(velocity)

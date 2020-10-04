@@ -8,10 +8,11 @@ var THE_WORLD_TILEMAP: String = "Enemy TileMap"
 func _ready():
 	pass # Replace with function body.
 
-
-
 var movement: Vector2 = Vector2(0, 0)
 
+func move(velocity):
+	self.transform.origin += velocity
+	
 func _process(delta):
 
 	self.movement = Vector2(0, 0)
@@ -27,15 +28,13 @@ func _process(delta):
 	if (Input.is_key_pressed(KEY_ESCAPE)):
 		get_tree().quit()
 
-	self.transform.origin += movement
-
 	return delta
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
 
 
-func _on_Hitbox_body_entered(body):
-	if (body.name == THE_WORLD_TILEMAP):
-		print(self.movement)
-		self.transform.origin -= self.movement
+#func _on_Hitbox_body_entered(body):
+#	if (body.name == THE_WORLD_TILEMAP):
+#		print(self.movement)
+#		self.transform.origin -= self.movement
