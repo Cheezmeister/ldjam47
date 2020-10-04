@@ -1,13 +1,14 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Root.gd" type="Script" id=1]
 [ext_resource path="res://assets/piggysprite.png" type="Texture" id=2]
-[ext_resource path="res://assets/Farm Sketch.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/Main_Music.ogg" type="AudioStream" id=3]
 [ext_resource path="res://Player.gd" type="Script" id=4]
 [ext_resource path="res://assets/UI Start Game.wav" type="AudioStream" id=5]
 [ext_resource path="res://assets/Character_Test.png" type="Texture" id=6]
 [ext_resource path="res://TileMap.gd" type="Script" id=7]
 [ext_resource path="res://Hitbox.gd" type="Script" id=8]
+[ext_resource path="res://assets/Intro_Main.ogg" type="AudioStream" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -117,8 +118,11 @@ environment = SubResource( 2 )
 position = Vector2( 370.543, 206.635 )
 format = 1
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="Main Music Loop" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
+
+[node name="Main Music Intro" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 9 )
 autoplay = true
 
 [node name="Enemy TileMap" type="TileMap" parent="."]
@@ -135,3 +139,4 @@ __meta__ = {
 
 [node name="Start Game" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
+[connection signal="finished" from="Main Music Intro" to="." method="_on_Main_Music_Intro_finished"]

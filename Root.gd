@@ -14,3 +14,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _on_Main_Music_Intro_finished():
+	print("wat")
+	$"Main Music Loop".play()
