@@ -23,13 +23,13 @@ func _physics_process(delta):
 	
 func handleanimation(delta):
 	print("blah")
-	if Input.is_action_pressed('left'):
+	if velocity.x < 0:
 		$AnimationPlayer.play('Walk_Left')
-	elif Input.is_action_pressed('right'):
+	elif velocity.x > 0:
 		$AnimationPlayer.play('Walk_Right')
-	elif Input.is_action_pressed('up'):
+	elif velocity.y < 0:
 		$AnimationPlayer.play('Walk_Up')
-	elif Input.is_action_pressed('down'):
+	elif velocity.y > 0:
 		$AnimationPlayer.play('Walk_Down')
 	else:
 		$AnimationPlayer.play('Idle')
