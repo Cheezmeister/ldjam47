@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Root.gd" type="Script" id=1]
 [ext_resource path="res://assets/piggysprite.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Hitbox.gd" type="Script" id=8]
 [ext_resource path="res://assets/Intro_Main.ogg" type="AudioStream" id=9]
 [ext_resource path="res://assets/SFX/Combat/Sickle Swings/Sickle_1.wav" type="AudioStream" id=10]
+[ext_resource path="res://Player_Test.gd" type="Script" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -311,22 +312,23 @@ __meta__ = {
 [node name="Start Game" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
 
-[node name="Player_Test" type="KinematicBody2D" parent="."]
+[node name="Player_Piggy" type="KinematicBody2D" parent="."]
+script = ExtResource( 11 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Player_Test"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Player_Piggy"]
+visible = false
 frames = SubResource( 7 )
 
-[node name="Sprite" type="Sprite" parent="Player_Test"]
+[node name="Sprite" type="Sprite" parent="Player_Piggy"]
 texture = ExtResource( 2 )
 vframes = 9
 hframes = 4
-frame = 25
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player_Test"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player_Piggy"]
 position = Vector2( 0.793701, 1.98425 )
 polygon = PoolVector2Array( -15.6568, 11.7997, -13.2757, 17.7524, -8.11661, 22.5146, 6.96371, 22.9115, 13.1149, 16.7603, 15.6944, 12.7918, 13.1149, 9.02171, 9.34482, 6.83904, 0.217255, 3.46581, -8.91031, 6.64061 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Player_Test"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player_Piggy"]
 anims/Attack_Down = SubResource( 8 )
 anims/Attack_Left = SubResource( 9 )
 anims/Attack_Right = SubResource( 10 )
