@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Root.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -6,8 +6,23 @@
 [ext_resource path="res://Player.gd" type="Script" id=4]
 [ext_resource path="res://assets/UI Start Game.wav" type="AudioStream" id=5]
 [ext_resource path="res://assets/Character_Test.png" type="Texture" id=6]
+[ext_resource path="res://TileMap.gd" type="Script" id=7]
+[ext_resource path="res://Hitbox.gd" type="Script" id=8]
+
+[sub_resource type="RectangleShape2D" id=6]
 
 [sub_resource type="Environment" id=1]
+background_mode = 4
+fog_enabled = true
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+points = PoolVector2Array( 0, 0, 480, 0, 480, 512, 0, 512 )
+
+[sub_resource type="ConvexPolygonShape2D" id=4]
+points = PoolVector2Array( 0, 0, 512, 0, 512, 512, 0, 512 )
+
+[sub_resource type="ConvexPolygonShape2D" id=5]
+points = PoolVector2Array( 512, 256, 0, 256, 0, 32, 512, 32 )
 
 [sub_resource type="TileSet" id=2]
 0/name = "Character_Test.png 0"
@@ -34,9 +49,16 @@
 1/navigation_offset = Vector2( 0, 0 )
 1/shape_offset = Vector2( 0, 0 )
 1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape = SubResource( 3 )
 1/shape_one_way = false
-1/shape_one_way_margin = 0.0
-1/shapes = [  ]
+1/shape_one_way_margin = 1.0
+1/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 3 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
 1/z_index = 0
 2/name = "Character_Test.png 2"
 2/texture = ExtResource( 6 )
@@ -48,9 +70,22 @@
 2/navigation_offset = Vector2( 0, 0 )
 2/shape_offset = Vector2( 0, 0 )
 2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape = SubResource( 4 )
 2/shape_one_way = false
-2/shape_one_way_margin = 0.0
-2/shapes = [  ]
+2/shape_one_way_margin = 1.0
+2/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 4 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 5 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
 2/z_index = 0
 
 [node name="Root" type="Node2D"]
@@ -65,25 +100,37 @@ script = ExtResource( 4 )
 position = Vector2( -40.363, -134.543 )
 texture = ExtResource( 2 )
 
+[node name="Hitbox" type="Area2D" parent="Player"]
+script = ExtResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Hitbox"]
+shape = SubResource( 6 )
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 1 )
 
 [node name="Maze" type="Node" parent="WorldEnvironment"]
 
+[node name="TileMap" type="TileMap" parent="WorldEnvironment"]
+position = Vector2( 370.543, 206.635 )
+format = 1
+
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
 autoplay = true
 
-[node name="TileMap" type="TileMap" parent="."]
+[node name="Enemy TileMap" type="TileMap" parent="."]
 position = Vector2( -371.543, -206.635 )
 scale = Vector2( 0.128, 0.128 )
 tile_set = SubResource( 2 )
 cell_size = Vector2( 500, 500 )
 format = 1
 tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 15, 0, 0, 65550, 1, 0, 131086, 1, 0, 196615, 2, 0, 196622, 1, 0, 262151, 2, 0, 262158, 1, 0, 327687, 2, 0, 327694, 1, 0, 393223, 2, 0, 393230, 1, 0, 458759, 2, 0, 458760, 1, 0, 458761, 1, 0, 458762, 1, 0, 458763, 1, 0, 458764, 1, 0, 458765, 1, 0, 458766, 1, 0, 524295, 2, 0 )
+script = ExtResource( 7 )
 __meta__ = {
 "_editor_description_": "		"
 }
 
 [node name="Start Game" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
+[connection signal="body_entered" from="Player/Hitbox" to="Player" method="_on_Hitbox_body_entered"]
