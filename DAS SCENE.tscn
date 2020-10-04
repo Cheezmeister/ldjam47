@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Root.gd" type="Script" id=1]
 [ext_resource path="res://assets/piggysprite.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://TileMap.gd" type="Script" id=7]
 [ext_resource path="res://Hitbox.gd" type="Script" id=8]
 [ext_resource path="res://assets/Intro_Main.ogg" type="AudioStream" id=9]
+[ext_resource path="res://assets/SFX/Combat/Sickle Swings/Sickle_1.wav" type="AudioStream" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -335,4 +336,7 @@ anims/Walk_Down = SubResource( 13 )
 anims/Walk_Left = SubResource( 14 )
 anims/Walk_Right = SubResource( 15 )
 anims/Walk_Up = SubResource( 16 )
+
+[node name="SickleSwing" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 10 )
 [connection signal="finished" from="Main Music Intro" to="." method="_on_Main_Music_Intro_finished"]
