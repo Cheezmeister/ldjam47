@@ -25,11 +25,11 @@ func handleanimation(delta):
 	print("blah")
 	if Input.is_action_pressed('left'):
 		$AnimationPlayer.play('Walk_Left')
-	if Input.is_action_pressed('right'):
+	elif Input.is_action_pressed('right'):
 		$AnimationPlayer.play('Walk_Right')
-	if Input.is_action_pressed('up'):
+	elif Input.is_action_pressed('up'):
 		$AnimationPlayer.play('Walk_Up')
-	if Input.is_action_pressed('down'):
+	elif Input.is_action_pressed('down'):
 		$AnimationPlayer.play('Walk_Down')
 	else:
 		$AnimationPlayer.play('Idle')
