@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Start Screen.gd" type="Script" id=1]
 [ext_resource path="res://assets/UI Start Game.wav" type="AudioStream" id=2]
 [ext_resource path="res://assets/Character_Test.png" type="Texture" id=3]
+[ext_resource path="res://assets/Titlescreen.png" type="Texture" id=4]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -44,3 +45,8 @@ stream = ExtResource( 2 )
 [node name="Title Art" type="Sprite" parent="."]
 position = Vector2( 1262, 880 )
 texture = ExtResource( 3 )
+
+[node name="Titlescreen" type="Sprite" parent="Title Art"]
+position = Vector2( -758.019, -583.692 )
+scale = Vector2( 0.575273, 0.575273 )
+texture = ExtResource( 4 )
