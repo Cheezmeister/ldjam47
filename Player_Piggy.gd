@@ -45,22 +45,28 @@ func handleanimation(delta):
 	print("blah")
 	if velocity.x < 0:
 		$AnimationPlayer.play('Walk_Left')
+		if velocity.x < 0 and Input.is_action_pressed('ui_accept'):	
+			$AnimationPlayer.play("Attack_Left")
 	elif velocity.x > 0:
 		$AnimationPlayer.play('Walk_Right')
+		if velocity.x > 0 and Input.is_action_pressed('ui_accept'):	
+			$AnimationPlayer.play("Attack_Right")
 	elif velocity.y < 0:
 		$AnimationPlayer.play('Walk_Up')
+		if velocity.y < 0 and Input.is_action_pressed('ui_accept'):	
+			$AnimationPlayer.play("Attack_Up")
 	elif velocity.y > 0:
 		$AnimationPlayer.play('Walk_Down')
+		if velocity.y > 0 and Input.is_action_pressed('ui_accept'):	
+			$AnimationPlayer.play("Attack_Down")
 	else:
 		$AnimationPlayer.play('Idle')
-
 
 var MOVE_SPEED: float = 5
 var THE_WORLD_TILEMAP: String = "Enemy TileMap"
 
-	
 func attack():
 	if not $"../SickleSwing".playing:
 		$"../SickleSwing".play()
-	$AnimationPlayer.play("Attack_Down")
-
+	
+		
