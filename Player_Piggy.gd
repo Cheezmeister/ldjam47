@@ -25,6 +25,11 @@ func _physics_process(delta):
 	get_input()
 	handleanimation(delta)
 	velocity = move_and_slide(velocity)
+	for i in get_slide_count():
+		var collision = get_slide_collision(i)
+		print("I collided with ", collision.collider.name)
+		if not $Bonk.playing:
+			$Bonk.play()
 	handlefootsteps()
 	
 func handlefootsteps():
@@ -41,7 +46,7 @@ func handlefootsteps():
 		if not $"Footsteps".playing:
 			$"Footsteps".play()
 			
-func handleanimation(delta):
+func handleanimation(_delta):
 	print("blah")
 	if velocity.x < 0:
 		$AnimationPlayer.play('Walk_Left')
@@ -59,6 +64,8 @@ func handleanimation(delta):
 		$AnimationPlayer.play('Walk_Down')
 		if velocity.y > 0 and Input.is_action_pressed('ui_accept'):	
 			$AnimationPlayer.play("Attack_Down")
+	elif velocity.x == 0 and velocity.y == 0 and Input.is_action_pressed('ui_accept'):
+			$AnimationPlayer.play('Attack_Down')
 	else:
 		$AnimationPlayer.play('Idle')
 
@@ -68,4 +75,5 @@ var THE_WORLD_TILEMAP: String = "Enemy TileMap"
 func attack():
 	if not $"../SickleSwing".playing:
 		$"../SickleSwing".play()
-
+		
+		 

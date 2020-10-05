@@ -1,9 +1,10 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://Root.gd" type="Script" id=1]
 [ext_resource path="res://assets/piggysprite.png" type="Texture" id=2]
 [ext_resource path="res://assets/Main_Music.ogg" type="AudioStream" id=3]
-[ext_resource path="res://assets/UI Start Game.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/SFX/Bonks/Bonk_1.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/SFX/UI/Unpause.wav" type="AudioStream" id=5]
 [ext_resource path="res://assets/Character_Test.png" type="Texture" id=6]
 [ext_resource path="res://TileMap.gd" type="Script" id=7]
 [ext_resource path="res://assets/Intro_Main.ogg" type="AudioStream" id=9]
@@ -237,8 +238,9 @@ animations = [ {
 } ]
 
 [sub_resource type="Animation" id=11]
-length = 0.3
+length = 0.25
 loop = true
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 0
@@ -458,6 +460,9 @@ anims/Walk_Up = SubResource( 19 )
 [node name="Footsteps" type="AudioStreamPlayer2D" parent="Player_Piggy"]
 stream = ExtResource( 13 )
 volume_db = -2.706
+
+[node name="Bonk" type="AudioStreamPlayer2D" parent="Player_Piggy"]
+stream = ExtResource( 4 )
 
 [node name="SickleSwing" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 10 )
