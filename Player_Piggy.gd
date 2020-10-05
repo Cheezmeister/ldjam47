@@ -68,5 +68,4 @@ var THE_WORLD_TILEMAP: String = "Enemy TileMap"
 func attack():
 	if not $"../SickleSwing".playing:
 		$"../SickleSwing".play()
-	
-		
+
